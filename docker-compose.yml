@@ -40,6 +40,7 @@ services:
     environment:
       - PORT=9090
       - PUBLIC_URL=${PUBLIC_URL}/api/zoomapp/proxy
+      - REACT_APP_API_URL=${API_URL}
       - REACT_APP_PUBLIC_ROOT=${PUBLIC_URL}
       - REACT_APP_AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID}
       - REACT_APP_AUTH0_CLIENT_SECRET=${AUTH0_CLIENT_SECRET}
@@ -80,3 +81,10 @@ services:
       - ./rtms/utils:/home/node/utils
       - ./rtms/sdk/logs:/home/node/app/logs
       - ./rtms/sdk/data:/home/node/app/data
+  # ngrok:
+  #   image: wernight/ngrok
+  #   platform: linux/amd64
+  #   command: ngrok http -hostname=electric-sure-sawfish.ngrok-free.app 3000
+  #   ports:
+  #     - "4040:4040"
+

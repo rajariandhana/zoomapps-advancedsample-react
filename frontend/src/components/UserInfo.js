@@ -1,5 +1,5 @@
-import Button from "react-bootstrap/Button";
-import "./UserInfo.css"
+// import Button from "react-bootstrap/Button";
+// import "./UserInfo.css"
 function UserInfo(props) {
   const {
     user,
@@ -28,9 +28,9 @@ function UserInfo(props) {
           browser session expired or was forgotten during a Docker restart.
           Please try closing and re-opening, or re-installing the application)
         </p>
-        <Button variant="primary" onClick={onClick}>
+        <button variant="primary" onClick={onClick}>
           authorize
-        </Button>
+        </button>
       </>
     );
   } else if (showGuestModePrompt) {
@@ -48,7 +48,7 @@ function UserInfo(props) {
         <h1>You are in Guest Mode</h1>
         <p>{bodyText}</p>
         <p>Not all APIs will be available in Guest Mode</p>
-        <Button onClick={onClick}>promptAuthorize</Button>
+        <button onClick={onClick}>promptAuthorize</button>
       </>
     );
   } else if (!user) {
@@ -58,9 +58,9 @@ function UserInfo(props) {
   }
 
   return (
-    <div >
-      <pre className="pre-userinfo">{JSON.stringify(user, null, 2)}</pre>
-    </div>
+    <main>
+      <div className="bg-white rounded-md shadow-md p-4 text-sm">{JSON.stringify(user, null, 2)}</div>
+    </main>
   );
 }
 

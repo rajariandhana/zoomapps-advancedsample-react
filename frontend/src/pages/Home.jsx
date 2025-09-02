@@ -1,19 +1,17 @@
 /* globals zoomSdk */
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useCallback, useEffect, useState } from 'react'
-import { apis } from './apis'
-import { Authorization } from './components/Authorization'
-import ApiScrollview from './components/ApiScrollview'
-import './App.css'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import { apis } from '../apis'
+import { Authorization } from '../components/Authorization'
+import ApiScrollview from '../components/ApiScrollview'
 import {Link} from 'react-router-dom'
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home'
-import About from './pages/About'
+import '../App.css'
+import Note from '../components/Note'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 let once = 0 // to prevent increasing number of event listeners being added
 
-function App() {
+function Home() {
   const navigate = useNavigate()
   const location = useLocation()
   const [error, setError] = useState(null)
@@ -193,16 +191,27 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <main>
+      <Note/>
+      {/* <span>
+        Hello
+        {user ? ` ${user.first_name}` : ' Zoom Apps user'}!
+      </span>
+      <p>{`User Context Status: ${userContextStatus}`}</p>
+      <p>{runningContext ? `Running Context: ${runningContext}` : 'Configuring Zoom JavaScript SDK...'}</p>
+
+      {rmtsMessage && <p className='fw-bold'>{rmtsMessage}</p>}
+
+      <ApiScrollview onStartRTMS={handleStartRTMS} onStopRTMS={handleStopRTMS} />
       <Authorization
         handleError={setError}
         handleUserContextStatus={setUserContextStatus}
         handleUser={setUser}
         user={user}
         userContextStatus={userContextStatus}
-      />
-    </div>
+      /> */}
+    </main>
   )
 }
 
-export default App
+export default Home;

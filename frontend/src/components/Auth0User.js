@@ -1,9 +1,9 @@
 /* globals zoomSdk */
 import { useEffect, useCallback, useState } from "react";
-import Spinner from "react-bootstrap/Spinner";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import Spinner from "react-bootstrap/Spinner";
+// import Alert from "react-bootstrap/Alert";
+// import Button from "react-bootstrap/Button";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 function Auth0User(props) {
   const [thirdPartyUser, setThirdPartyUser] = useState(null);
@@ -61,44 +61,44 @@ function Auth0User(props) {
     <div>
       <pre>
         {isLoadingAuth0 && !isMissingAuthVariables ? (
-          <Spinner animation="border" role="status">
+          // <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          // </Spinner>
         ) : thirdPartyUser ? (
           <div>
             <div style={{ display: "inline-block" }}>
               {JSON.stringify(
                 thirdPartyUser,
-                <Button
+                <button
                   variant="primary"
                   disabled={isMissingAuthVariables}
                   onClick={thirdPartyInstall}
                 >
                   Please Login
-                </Button>,
+                </button>,
                 2
               )}
             </div>
-            <Button
+            <button
               style={{ marginTop: "15px", float: "right" }}
               variant="danger"
               onClick={thirdPartyLogout}
             >
               Logout
-            </Button>
+            </button>
           </div>
         ) : (
           <>
             {isMissingAuthVariables && (
-              <Alert variant="warning">Missing Auth0 env variables</Alert>
+              <alert variant="warning">Missing Auth0 env variables</alert>
             )}
-            <Button
+            <button
               variant="primary"
               disabled={isLoggingIn || isMissingAuthVariables}
               onClick={isLoggingIn ? null : thirdPartyInstall}
             >
               {isLoggingIn ? "Logging in..." : "Please Login"}
-            </Button>
+            </button>
           </>
         )}
       </pre>

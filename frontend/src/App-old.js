@@ -5,11 +5,7 @@ import { apis } from './apis'
 import { Authorization } from './components/Authorization'
 import ApiScrollview from './components/ApiScrollview'
 import './App.css'
-// import 'bootstrap/dist/css/bootstrap.min.css'
-import {Link} from 'react-router-dom'
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home'
-import About from './pages/About'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 let once = 0 // to prevent increasing number of event listeners being added
 
@@ -192,8 +188,36 @@ function App() {
     )
   }
 
+  const handleStartRTMS = async () => {
+    try {
+      const res = await zoomSdk.callZoomApi('startRTMS')
+      setRtmsMessage(`startRTMS success response: ${res}`)
+    } catch (error) {
+      setRtmsMessage(`startRTMS error response: ${error}`)
+    }
+  }
+
+  const handleStopRTMS = async () => {
+    try {
+      const res = await zoomSdk.callZoomApi('stopRTMS')
+      setRtmsMessage(`stopRTMS success response: ${res}`)
+    } catch (error) {
+      setRtmsMessage(`stopRTMS error response: ${error}`)
+    }
+  }
+
   return (
     <div className='App'>
+      <h1>
+        Hello
+        {user ? ` ${user.first_name} ${user.last_name}` : ' Zoom Apps user'}!
+      </h1>
+      <p>{`User Context Status: ${userContextStatus}`}</p>
+      <p>{runningContext ? `Running Context: ${runningContext}` : 'Configuring Zoom JavaScript SDK...'}</p>
+
+      {rmtsMessage && <p className='fw-bold'>{rmtsMessage}</p>}
+
+      <ApiScrollview onStartRTMS={handleStartRTMS} onStopRTMS={handleStopRTMS} />
       <Authorization
         handleError={setError}
         handleUserContextStatus={setUserContextStatus}
