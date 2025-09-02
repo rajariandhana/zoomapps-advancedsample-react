@@ -1,3 +1,14 @@
+
+
+## To run
+make sure you have ngrok
+```sh
+ngrok http --url=electric-sure-sawfish.ngrok-free.app 3000
+docker-compose up
+```
+
+## below is from sample
+
 # Advanced Zoom Apps Sample
 
 Advanced Sample covers most complex scenarios that might be needed in apps.
